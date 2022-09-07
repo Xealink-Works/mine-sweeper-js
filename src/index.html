@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title> mine-sweepeer </title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="index.css">
+
+    <!-- font icons -->
+    <script src="https://kit.fontawesome.com/a0498ba0ed.js" crossorigin="anonymous"></script>
+
+    <!-- ds_fontes -->
+    <link href="https://fonts.cdnfonts.com/css/ds-digital" rel="stylesheet">
+    <script src="../src/helpers/get-coordinates-from-sequence-number.js"></script>
+    <script src="../src/helpers/get-target-from-coordinates.js"></script>
+    <script src="../src/helpers/get-gridcell-from-coordinates.js"></script>
+    <script src="../src/helpers/get-sequence-number-from-coordinates.js"></script>
+    <script src="../src/helpers/update-time-elapsed.js"></script>
+    <script src="../src/helpers/start.js"></script>
+    <script src="../src/helpers/reveal.js"></script>
+    <script src="../src/helpers/remove-class.js"></script>
+    <script src="../src/helpers/prepare.js"></script>
+    <script src="../src/helpers/load-mines.js"></script>
+    <script src="../src/helpers/load-clues.js"></script>
+    <script src="../src/helpers/is-flagged.js"></script>
+    <script src="../src/helpers/has-class.js"></script>
+    <script src="../src/helpers/hide.js"></script>
+    <script src="../src/helpers/get-top-layer-content.js"></script>
+    <script src="../src/helpers/get-clue-number.js"></script>
+    <script src="../src/helpers/get-board-config.js"></script>
+    <script src="../src/helpers/get-base-layer-content.js"></script>
+    <script src="../src/helpers/get-adjacent-cell-refs.js"></script>
+    <script src="../src/helpers/flag.js"></script>
+    <script src="../src/helpers/add-class.js"></script>
+    <script src="../src/helpers/start-new-game.js"></script>
+    <script src="../src/helpers/restart.js"></script>
+    <script src="../src/helpers/end-game.js"></script>
+    <script src="../src/helpers/is-game-completed.js"></script>
+    <script src="../src/modules/mine-sweeper.js"></script>
+</head>
+
+<body onload="mineSweepeer.startNewGame('B')">
+    <div class="buttons-bar">
+        <div onclick="mineSweepeer.startNewGame('B')">Beginner</div>
+        <div onclick="mineSweepeer.startNewGame('I')">Intermediate</div>
+        <div onclick="mineSweepeer.startNewGame('E')">Expert</div>
+    </div>
+
+    <div id="main" class="main">
+        <div class="score-board">
+
+            <div id="timer" class="timer">
+                0000
+            </div>
+
+            <div class="emoji">
+                <button onclick="mineSweepeer.restart()" ><img class="emoji-button"
+                        src="https://image.shutterstock.com/image-vector/cute-smiling-emoticon-wearing-black-600w-434246203.jpg"
+                        alt="emoji-button" width="72px"></button>
+            </div>
+
+            <div id="counter" class="counter">
+                
+            </div>
+
+        </div>
+
+        <div class="game-board">
+
+            <div id="layer0" class="layer0">
+            </div>
+
+            <div id="layer1" class="layer1">
+            </div>
+        </div>
+
+    </div>
+
+
+    <script>
+        var mineSweepeer = new Minesweeper();
+
+        function clickHandler(e) {
+            if(mineSweepeer.gameStatus === 'Completed') return;
+            if (e.ctrlKey)
+                mineSweepeer.flag(e);
+            else
+                mineSweepeer.reveal(e.target);
+        }
+    </script>
+
+
+</body>
+
+</html>

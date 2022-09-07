@@ -1,1 +1,1 @@
-# mine-sweeper-js
+# w3fy
